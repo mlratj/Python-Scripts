@@ -20,13 +20,13 @@ class Edges(object):
                 first_edge.append(int(l))
                 second_edge.append(int(k))
 
-            adj_list = [[] for k in range(no_nodes)]
+        adj_list = [[] for k in range(no_nodes)]
 
-            for i in range(len(first_edge)):
-                u = first_edge[i]
-                v = second_edge[i]
-                adj_list[u].append(v)
-        for k in range(len(adj_list)):
+        for i in range(len(first_edge)):
+            u = first_edge[i]
+            v = second_edge[i]
+            adj_list[u].append(v)
+        for k in range(len(adj_list)-1):
             print(k, ":", adj_list[k])
 
         return "Success!"
