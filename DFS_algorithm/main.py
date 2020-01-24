@@ -48,5 +48,5 @@ if __name__ == '__main__':
     a = Edges("text.txt")
     b = a.operation_neighbours()
     l = a.operation_dict(b)
-    n = str(a.dfs_alg(l, 3))
+    n = str(a.dfs_alg(l, 0))
     print(f'Queue is {n}')

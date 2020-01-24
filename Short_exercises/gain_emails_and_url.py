@@ -1,7 +1,7 @@
-# gain email adresses from the text
+# gain email addresses from the text
 import re
 
-print("This little program is going to help you with finding email adresses in a solid text.")
+print("This little program is going to help you with finding email addresses in a solid text.")
 pattern=r'[\w\.-]+@[\w\.-]+'
 x=input("Insert any amount of text: \n")
 match=re.findall(pattern, x)
@@ -13,10 +13,10 @@ if len(match)>1:
 else:
     print()
     print("There are no email addresses in a provided text.")
-    
 
-#gain url from the text    
-page =('your text or webpage source')
+
+# gain url from the text
+page = 'your text or web page source'
 start_link = page.find('<a href=')+len('<a href=')+1
 stop_link = page.find('>', start_link)-1
 url=page[start_link:stop_link]
