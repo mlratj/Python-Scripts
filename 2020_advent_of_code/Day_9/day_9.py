@@ -16,23 +16,53 @@ def expose_weekness(input_data):
         check_list = []
         while counter < max_search_len:
             el_sum = 0
+            el_list =[]
             el_1 = input_data[next_el - counter] # 24
+            el_list.append(el_1)
             sub_counter = 2
             while sub_counter <= 25:
                 el_2 = input_data[next_el - sub_counter] # 23
                 el_sum = el_1 + el_2
                 check_list.append(el_sum)
+                el_list.append(el_2)
                 sub_counter += 1
             counter += 1
         if el_value not in check_list:
-            return(el_value)
+            el_list.reverse()
+            return([el_value, next_el])
         next_el += 1
     return None
 
+def break_xmas_encryption(weak_num, weak_num_id, full_list):
+    """Checks for the group of numbers that sums up to 
+a week number and ads its smallest and bigger numbem."""
+    x = 0
+    y = 1
+    while x <= len(full_list):
+        range_sum = sum(full_list[x:y])
+        # if range_sum != 0:
+            # print(f"x: {x}, y: {y}, sum: {range_sum}")
+        if range_sum == weak_num:
+            min_value = min(full_list[x:y])
+            max_value = max(full_list[x:y])
+            final_code = min_value + max_value
+            return(final_code)
+        elif range_sum < weak_num:
+            y += 1
+        else:
+            x += 1
+    return None
+
+
 def main():
     input_file = open_file('input.txt')
-    corrupted_num = expose_weekness(input_file)
-    print(corrupted_num)
+    corrupted_nums = expose_weekness(input_file)
+    week_num = corrupted_nums[0]
+    week_num_id = corrupted_nums[1]
+    break_point = break_xmas_encryption(week_num, week_num_id, input_file)
+    print(break_point)
+    print(break_xmas_encryption.__doc__)
+
 
 if __name__ == '__main__':
     main()
